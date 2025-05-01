@@ -2,6 +2,6 @@
 
 Responsive landing page template built with semantic HTML5 and utility-first Tailwind CSS, featuring a clean layout and modern UI components.
 
-Live Project Url: [here](https://loquacious-wisp-1db6d1.netlify.app/)
+Project Url: [here](https://loquacious-wisp-1db6d1.netlify.app/)
 
 <img src="./img/screen.png" width="800" style="display:block;margin: 40px auto" />
