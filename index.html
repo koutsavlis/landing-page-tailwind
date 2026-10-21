@@ -16,7 +16,7 @@
         <div class="flex items-center justify-between">
             <!-- Logo -->
             <div class="pt-2">
-                <img src="img/logo.svg" alt="" />
+                <img src="img/logo.svg" alt="Manage" />
             </div>
             <!-- Menu Items -->
             <div class="hidden space-x-6 md:flex">
@@ -32,7 +32,8 @@
                 Started</a>
 
             <!-- Hamburger Icon -->
-            <button id="menu-btn" class="block hamburger md:hidden focus:outline-none">
+            <button id="menu-btn" type="button" class="block hamburger md:hidden" aria-label="Open menu"
+                aria-expanded="false" aria-controls="menu">
                 <span class="hamburger-top"></span>
                 <span class="hamburger-middle"></span>
                 <span class="hamburger-bottom"></span>
@@ -191,7 +192,7 @@
                 <!-- Testimonial 1 -->
                 <div class="flex flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:w-1/3">
                     <img src="img/avatar-anisha.png" class="w-16 -mt-14" alt="" />
-                    <h5 class="text-lg font-bold">Anisha Li</h5>
+                    <h3 class="text-lg font-bold">Anisha Li</h3>
                     <p class="text-sm text-darkGrayishBlue">
                         “Manage has supercharged our team’s workflow. The ability to
                         maintain visibility on larger milestones at all times keeps
@@ -202,7 +203,7 @@
                 <!-- Testimonial 2 -->
                 <div class="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:flex md:w-1/3">
                     <img src="img/avatar-ali.png" class="w-16 -mt-14" alt="" />
-                    <h5 class="text-lg font-bold">Ali Bravo</h5>
+                    <h3 class="text-lg font-bold">Ali Bravo</h3>
                     <p class="text-sm text-darkGrayishBlue">
                         “We have been able to cancel so many other subscriptions since
                         using Manage. There is no more cross-channel confusion and
@@ -213,7 +214,7 @@
                 <!-- Testimonial 3 -->
                 <div class="hidden flex-col items-center p-6 space-y-6 rounded-lg bg-veryLightGray md:flex md:w-1/3">
                     <img src="img/avatar-richard.png" class="w-16 -mt-14" alt="" />
-                    <h5 class="text-lg font-bold">Richard Watts</h5>
+                    <h3 class="text-lg font-bold">Richard Watts</h3>
                     <p class="text-sm text-darkGrayishBlue">
                         “Manage allows us to provide structure and process. It keeps us
                         organized and focused. I can't stop recommending them to everyone
@@ -261,29 +262,29 @@
                 </div>
                 <!-- Logo -->
                 <div>
-                    <img src="img/logo-white.svg" class="h-8" alt="" />
+                    <img src="img/logo-white.svg" class="h-8" alt="Manage" />
                 </div>
                 <!-- Social Links Container -->
                 <div class="flex justify-center space-x-4">
                     <!-- Link 1 -->
-                    <a href="#">
-                        <img src="img/icon-facebook.svg" alt="" class="h-8" />
+                    <a href="#" aria-label="Facebook">
+                        <img src="img/icon-facebook.svg" alt="Facebook" class="h-8" />
                     </a>
                     <!-- Link 2 -->
-                    <a href="#">
-                        <img src="img/icon-youtube.svg" alt="" class="h-8" />
+                    <a href="#" aria-label="YouTube">
+                        <img src="img/icon-youtube.svg" alt="YouTube" class="h-8" />
                     </a>
                     <!-- Link 3 -->
-                    <a href="#">
-                        <img src="img/icon-twitter.svg" alt="" class="h-8" />
+                    <a href="#" aria-label="Twitter">
+                        <img src="img/icon-twitter.svg" alt="Twitter" class="h-8" />
                     </a>
                     <!-- Link 4 -->
-                    <a href="#">
-                        <img src="img/icon-pinterest.svg" alt="" class="h-8" />
+                    <a href="#" aria-label="Pinterest">
+                        <img src="img/icon-pinterest.svg" alt="Pinterest" class="h-8" />
                     </a>
                     <!-- Link 5 -->
-                    <a href="#">
-                        <img src="img/icon-instagram.svg" alt="" class="h-8" />
+                    <a href="#" aria-label="Instagram">
+                        <img src="img/icon-instagram.svg" alt="Instagram" class="h-8" />
                     </a>
                 </div>
             </div>
@@ -306,10 +307,11 @@
             <div class="flex flex-col justify-between">
                 <form>
                     <div class="flex space-x-3">
-                        <input type="text" class="flex-1 px-4 rounded-full focus:outline-none"
-                            placeholder="Updated in your inbox" />
-                        <button
-                            class="px-6 py-2 text-white rounded-full bg-brightRed hover:bg-brightRedLight focus:outline-none">
+                        <label for="newsletter-email" class="sr-only">Email address</label>
+                        <input id="newsletter-email" type="email" name="email" required autocomplete="email"
+                            class="flex-1 px-4 rounded-full" placeholder="Updated in your inbox" />
+                        <button type="submit"
+                            class="px-6 py-2 text-white rounded-full bg-brightRed hover:bg-brightRedLight">
                             Go
                         </button>
                     </div>
