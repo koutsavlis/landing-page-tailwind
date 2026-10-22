@@ -1,4 +1,6 @@
 {
+  "name": "landing-page-tailwind",
+  "private": true,
   "devDependencies": {
     "tailwindcss": "^3.4.17"
   },
