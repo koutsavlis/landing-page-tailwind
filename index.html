@@ -9,11 +9,26 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
     <link rel="stylesheet" href="css/main.css" />
     <title>Manage | Landing Page</title>
-    <!-- Lets the CSS know JavaScript is available, before the page is painted -->
-    <script>document.documentElement.classList.add('js');</script>
+    <!-- Runs before the page is painted, so there is no flash of the wrong theme -->
+    <script>
+        // Lets the CSS know JavaScript is available
+        document.documentElement.classList.add('js');
+
+        // Apply the saved theme, or the operating system preference
+        try {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        } catch (error) {
+            // localStorage can be blocked (e.g. private mode): fall back to the light theme
+        }
+    </script>
 </head>
 
-<body>
+<body class="text-black bg-white transition-colors duration-300 dark:text-white dark:bg-veryDarkBlue">
     <!-- Header -->
     <header id="site-header" class="sticky top-0 z-50 transition-shadow duration-300">
     <nav class="relative container mx-auto p-6">
@@ -21,7 +36,8 @@
         <div class="flex items-center justify-between">
             <!-- Logo -->
             <div class="pt-2">
-                <img src="img/logo.svg" alt="Manage" />
+                <img src="img/logo.svg" class="dark:hidden" alt="Manage" />
+                <img src="img/logo-white.svg" class="hidden dark:block" alt="Manage" />
             </div>
             <!-- Menu Items -->
             <div class="hidden space-x-6 md:flex">
@@ -29,24 +45,43 @@
                 <a href="#testimonials" class="hover:text-darkGrayishBlue">Testimonials</a>
                 <a href="#newsletter" class="hover:text-darkGrayishBlue">Newsletter</a>
             </div>
-            <!-- Button -->
-            <a href="#newsletter"
-                class="hidden p-3 px-6 pt-2 text-white bg-brightRed rounded-full hover:bg-brightRedLight md:block">Get
-                Started</a>
+            <!-- Right side: theme toggle, button, hamburger -->
+            <div class="flex items-center space-x-4">
+                <!-- Dark mode toggle -->
+                <button id="theme-toggle" type="button" aria-label="Dark mode" aria-pressed="false"
+                    class="p-2 rounded-full hover:bg-veryLightGray dark:hover:bg-darkCard">
+                    <!-- Moon icon: shown in light mode -->
+                    <svg class="w-5 h-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <!-- Sun icon: shown in dark mode -->
+                    <svg class="hidden w-5 h-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                    </svg>
+                </button>
 
-            <!-- Hamburger Icon -->
-            <button id="menu-btn" type="button" class="block hamburger md:hidden" aria-label="Open menu"
-                aria-expanded="false" aria-controls="menu">
-                <span class="hamburger-top"></span>
-                <span class="hamburger-middle"></span>
-                <span class="hamburger-bottom"></span>
-            </button>
+                <!-- Button -->
+                <a href="#newsletter"
+                    class="hidden p-3 px-6 pt-2 text-white bg-brightRed rounded-full hover:bg-brightRedLight md:block">Get
+                    Started</a>
+
+                <!-- Hamburger Icon -->
+                <button id="menu-btn" type="button" class="block hamburger md:hidden" aria-label="Open menu"
+                    aria-expanded="false" aria-controls="menu">
+                    <span class="hamburger-top"></span>
+                    <span class="hamburger-middle"></span>
+                    <span class="hamburger-bottom"></span>
+                </button>
+            </div>
         </div>
 
         <!-- Mobile Menu -->
         <div class="md:hidden">
             <div id="menu"
-                class="absolute flex-col items-center hidden py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto left-6 right-6 drop-shadow-md">
+                class="absolute flex-col items-center hidden py-8 mt-10 space-y-6 font-bold bg-white dark:bg-darkCard sm:w-auto left-6 right-6 drop-shadow-md">
                 <a href="#features">Features</a>
                 <a href="#testimonials">Testimonials</a>
                 <a href="#newsletter">Newsletter</a>
@@ -102,7 +137,7 @@
                 <!-- List Item 1 -->
                 <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row" data-reveal>
                     <!-- Heading -->
-                    <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
+                    <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent dark:bg-brightRed/20 md:dark:bg-transparent">
                         <div class="flex items-center space-x-2">
                             <div class="px-4 py-2 text-white rounded-full md:py-1 bg-brightRed">
                                 01
@@ -130,7 +165,7 @@
                 <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row" data-reveal
                     style="--reveal-delay: 150ms">
                     <!-- Heading -->
-                    <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
+                    <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent dark:bg-brightRed/20 md:dark:bg-transparent">
                         <div class="flex items-center space-x-2">
                             <div class="px-4 py-2 text-white rounded-full md:py-1 bg-brightRed">
                                 02
@@ -157,7 +192,7 @@
                 <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row" data-reveal
                     style="--reveal-delay: 300ms">
                     <!-- Heading -->
-                    <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
+                    <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent dark:bg-brightRed/20 md:dark:bg-transparent">
                         <div class="flex items-center space-x-2">
                             <div class="px-4 py-2 text-white rounded-full md:py-1 bg-brightRed">
                                 03
@@ -196,7 +231,7 @@
                 class="flex gap-6 pt-14 mt-10 overflow-x-auto snap-x snap-mandatory no-scrollbar md:overflow-visible md:snap-none"
                 data-reveal>
                 <!-- Testimonial 1 -->
-                <div class="flex flex-col items-center w-full p-6 space-y-6 rounded-lg shrink-0 snap-center bg-veryLightGray md:w-1/3 md:shrink">
+                <div class="flex flex-col items-center w-full p-6 space-y-6 rounded-lg shrink-0 snap-center bg-veryLightGray dark:bg-darkCard md:w-1/3 md:shrink">
                     <img src="img/avatar-anisha.png" class="w-16 -mt-14" alt="" />
                     <h3 class="text-lg font-bold">Anisha Li</h3>
                     <p class="text-sm text-darkGrayishBlue">
@@ -207,7 +242,7 @@
                 </div>
 
                 <!-- Testimonial 2 -->
-                <div class="flex flex-col items-center w-full p-6 space-y-6 rounded-lg shrink-0 snap-center bg-veryLightGray md:w-1/3 md:shrink">
+                <div class="flex flex-col items-center w-full p-6 space-y-6 rounded-lg shrink-0 snap-center bg-veryLightGray dark:bg-darkCard md:w-1/3 md:shrink">
                     <img src="img/avatar-ali.png" class="w-16 -mt-14" alt="" />
                     <h3 class="text-lg font-bold">Ali Bravo</h3>
                     <p class="text-sm text-darkGrayishBlue">
@@ -218,7 +253,7 @@
                 </div>
 
                 <!-- Testimonial 3 -->
-                <div class="flex flex-col items-center w-full p-6 space-y-6 rounded-lg shrink-0 snap-center bg-veryLightGray md:w-1/3 md:shrink">
+                <div class="flex flex-col items-center w-full p-6 space-y-6 rounded-lg shrink-0 snap-center bg-veryLightGray dark:bg-darkCard md:w-1/3 md:shrink">
                     <img src="img/avatar-richard.png" class="w-16 -mt-14" alt="" />
                     <h3 class="text-lg font-bold">Richard Watts</h3>
                     <p class="text-sm text-darkGrayishBlue">
@@ -266,7 +301,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-veryDarkBlue">
+    <footer class="bg-veryDarkBlue dark:bg-darkestBlue">
         <!-- Flex Container -->
         <div
             class="container flex flex-col-reverse justify-between px-6 py-10 mx-auto space-y-8 md:flex-row md:space-y-0">
@@ -326,7 +361,7 @@
                         <label for="newsletter-email" class="sr-only">Email address</label>
                         <input id="newsletter-email" type="email" name="email" required autocomplete="email"
                             aria-describedby="newsletter-message"
-                            class="flex-1 w-full min-w-0 px-4 rounded-full" placeholder="Updated in your inbox" />
+                            class="flex-1 w-full min-w-0 px-4 bg-white rounded-full text-veryDarkBlue" placeholder="Updated in your inbox" />
                         <button type="submit"
                             class="px-6 py-2 text-white rounded-full bg-brightRed hover:bg-brightRedLight">
                             Go

@@ -27,6 +27,7 @@ function updateHeader() {
   const isScrolled = window.scrollY > 10;
 
   header.classList.toggle('bg-white', isScrolled);
+  header.classList.toggle('dark:bg-veryDarkBlue', isScrolled);
   header.classList.toggle('shadow-md', isScrolled);
 }
 
@@ -132,4 +133,45 @@ const revealObserver = new IntersectionObserver(
 
 document.querySelectorAll('[data-reveal]').forEach((element) => {
   revealObserver.observe(element);
+});
+
+// Dark mode toggle: remembers the user's choice, otherwise follows the OS setting
+const themeToggle = document.getElementById('theme-toggle');
+const root = document.documentElement;
+const darkSchemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+function getSavedTheme() {
+  try {
+    return localStorage.getItem('theme');
+  } catch (error) {
+    return null; // storage blocked
+  }
+}
+
+function saveTheme(theme) {
+  try {
+    localStorage.setItem('theme', theme);
+  } catch (error) {
+    // storage blocked: the theme still works for this visit
+  }
+}
+
+function applyTheme(isDark) {
+  root.classList.toggle('dark', isDark);
+  themeToggle.setAttribute('aria-pressed', isDark);
+}
+
+// Sync the button with the theme the <head> script already applied
+applyTheme(root.classList.contains('dark'));
+
+themeToggle.addEventListener('click', () => {
+  const isDark = !root.classList.contains('dark');
+
+  applyTheme(isDark);
+  saveTheme(isDark ? 'dark' : 'light');
+});
+
+// If the user has not picked a theme, follow OS changes live
+darkSchemeQuery.addEventListener('change', (event) => {
+  if (!getSavedTheme()) applyTheme(event.matches);
 });

@@ -1,4 +1,5 @@
 module.exports = {
+  darkMode: 'class',
   content: ['./*.html', './js/**/*.js'],
   theme: {
     screens: {
@@ -17,6 +18,8 @@ module.exports = {
         veryDarkBlue: 'hsl(233, 12%, 13%)',
         veryPaleRed: 'hsl(13, 100%, 96%)',
         veryLightGray: 'hsl(0, 0%, 98%)',
+        darkCard: 'hsl(233, 12%, 19%)',
+        darkestBlue: 'hsl(233, 14%, 8%)',
       },
     },
   },
