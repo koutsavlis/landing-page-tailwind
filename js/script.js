@@ -19,3 +19,16 @@ nav.querySelectorAll('a').forEach((link) => {
     if (btn.classList.contains('open')) toggleMenu();
   });
 });
+
+// Sticky header: add a background and shadow once the page is scrolled
+const header = document.getElementById('site-header');
+
+function updateHeader() {
+  const isScrolled = window.scrollY > 10;
+
+  header.classList.toggle('bg-white', isScrolled);
+  header.classList.toggle('shadow-md', isScrolled);
+}
+
+window.addEventListener('scroll', updateHeader, { passive: true });
+updateHeader();

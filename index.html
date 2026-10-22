@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-pt-28 motion-safe:scroll-smooth">
 
 <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,8 @@
 </head>
 
 <body>
-    <!-- Navbar -->
+    <!-- Header -->
+    <header id="site-header" class="sticky top-0 z-50 transition-shadow duration-300">
     <nav class="relative container mx-auto p-6">
         <!-- Flex container -->
         <div class="flex items-center justify-between">
@@ -22,14 +23,12 @@
             </div>
             <!-- Menu Items -->
             <div class="hidden space-x-6 md:flex">
-                <a href="#" class="hover:text-darkGrayishBlue">Pricing</a>
-                <a href="#" class="hover:text-darkGrayishBlue">Product</a>
-                <a href="#" class="hover:text-darkGrayishBlue">About Us</a>
-                <a href="#" class="hover:text-darkGrayishBlue">Careers</a>
-                <a href="#" class="hover:text-darkGrayishBlue">Community</a>
+                <a href="#features" class="hover:text-darkGrayishBlue">Features</a>
+                <a href="#testimonials" class="hover:text-darkGrayishBlue">Testimonials</a>
+                <a href="#newsletter" class="hover:text-darkGrayishBlue">Newsletter</a>
             </div>
             <!-- Button -->
-            <a href="#"
+            <a href="#newsletter"
                 class="hidden p-3 px-6 pt-2 text-white bg-brightRed rounded-full hover:bg-brightRedLight md:block">Get
                 Started</a>
 
@@ -46,14 +45,13 @@
         <div class="md:hidden">
             <div id="menu"
                 class="absolute flex-col items-center hidden py-8 mt-10 space-y-6 font-bold bg-white sm:w-auto left-6 right-6 drop-shadow-md">
-                <a href="#">Pricing</a>
-                <a href="#">Product</a>
-                <a href="#">About Us</a>
-                <a href="#">Careers</a>
-                <a href="#">Community</a>
+                <a href="#features">Features</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#newsletter">Newsletter</a>
             </div>
         </div>
     </nav>
+    </header>
 
     <!-- Hero Section -->
     <section id="hero">
@@ -69,7 +67,7 @@
                     while keeping the larger team goals in view.
                 </p>
                 <div class="flex justify-center md:justify-start">
-                    <a href="#"
+                    <a href="#newsletter"
                         class="p-3 px-6 pt-2 text-white bg-brightRed rounded-full hover:bg-brightRedLight">Get
                         Started</a>
                 </div>
@@ -226,7 +224,7 @@
             </div>
             <!-- Button -->
             <div class="my-16">
-                <a href="#"
+                <a href="#newsletter"
                     class="p-3 px-6 pt-2 text-white bg-brightRed rounded-full hover:bg-brightRedLight">Get
                     Started</a>
             </div>
@@ -244,7 +242,7 @@
             </h2>
             <!-- Button -->
             <div>
-                <a href="#"
+                <a href="#newsletter"
                     class="p-3 px-6 pt-2 text-brightRed bg-white rounded-full shadow-2xl hover:bg-gray-900">Get
                     Started</a>
             </div>
@@ -307,7 +305,7 @@
 
             <!-- Input Container -->
             <div class="flex flex-col justify-between">
-                <form>
+                <form id="newsletter">
                     <div class="flex space-x-3">
                         <label for="newsletter-email" class="sr-only">Email address</label>
                         <input id="newsletter-email" type="email" name="email" required autocomplete="email"
