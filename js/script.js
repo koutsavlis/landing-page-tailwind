@@ -69,3 +69,50 @@ const slideObserver = new IntersectionObserver(
 
 slides.forEach((slide) => slideObserver.observe(slide));
 setActiveDot(0);
+
+// Newsletter form: client-side validation with accessible messages
+const form = document.getElementById('newsletter');
+const emailInput = document.getElementById('newsletter-email');
+const formMessage = document.getElementById('newsletter-message');
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+function showFormMessage(text, type) {
+  const hasError = type === 'error';
+
+  formMessage.textContent = text;
+  formMessage.classList.toggle('text-red-400', hasError);
+  formMessage.classList.toggle('text-green-400', type === 'success');
+
+  emailInput.classList.toggle('ring-2', hasError);
+  emailInput.classList.toggle('ring-red-400', hasError);
+  emailInput.setAttribute('aria-invalid', hasError ? 'true' : 'false');
+}
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+  const email = emailInput.value.trim();
+
+  if (email === '') {
+    showFormMessage('Please enter your email address.', 'error');
+    emailInput.focus();
+    return;
+  }
+
+  if (!EMAIL_PATTERN.test(email)) {
+    showFormMessage('Please enter a valid email, e.g. name@example.com.', 'error');
+    emailInput.focus();
+    return;
+  }
+
+  // Demo only: there is no backend, so we confirm and reset the form
+  showFormMessage(`Thanks! ${email} is now subscribed.`, 'success');
+  form.reset();
+});
+
+// Clear the error as soon as the user starts fixing the input
+emailInput.addEventListener('input', () => {
+  if (emailInput.getAttribute('aria-invalid') === 'true') {
+    showFormMessage('', null);
+  }
+});
