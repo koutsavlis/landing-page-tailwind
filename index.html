@@ -9,6 +9,8 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png" />
     <link rel="stylesheet" href="css/main.css" />
     <title>Manage | Landing Page</title>
+    <!-- Lets the CSS know JavaScript is available, before the page is painted -->
+    <script>document.documentElement.classList.add('js');</script>
 </head>
 
 <body>
@@ -58,7 +60,7 @@
         <!-- Flex Container -->
         <div class="container flex flex-col-reverse items-center px-6 mx-auto mt-10 md:flex-row">
             <!-- Left item -->
-            <div class="flex flex-col mb-32 space-y-12 md:w-1/2">
+            <div class="flex flex-col mb-32 space-y-12 md:w-1/2" data-reveal>
                 <h1 class="max-w-md text-4xl font-bold text-center md:text-5xl md:text-left">
                     Bring everyone together to build better products
                 </h1>
@@ -73,7 +75,7 @@
                 </div>
             </div>
             <!-- Image -->
-            <div class="md:w-1/2">
+            <div class="md:w-1/2" data-reveal="right">
                 <img src="img/illustration-intro.svg" alt="" />
             </div>
         </div>
@@ -84,7 +86,7 @@
         <!-- Flex container -->
         <div class="container flex flex-col px-4 mx-auto mt-10 space-y-12 md:space-y-0 md:flex-row">
             <!-- What's Different -->
-            <div class="flex flex-col space-y-12 md:w-1/2">
+            <div class="flex flex-col space-y-12 md:w-1/2" data-reveal>
                 <h2 class="max-w-md text-4xl font-bold text-center md:text-left">
                     What's different about Manage?
                 </h2>
@@ -98,7 +100,7 @@
             <!-- Numbered List -->
             <div class="flex flex-col space-y-8 md:w-1/2">
                 <!-- List Item 1 -->
-                <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row">
+                <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row" data-reveal>
                     <!-- Heading -->
                     <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
                         <div class="flex items-center space-x-2">
@@ -125,7 +127,8 @@
                 </div>
 
                 <!-- List Item 2 -->
-                <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row">
+                <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row" data-reveal
+                    style="--reveal-delay: 150ms">
                     <!-- Heading -->
                     <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
                         <div class="flex items-center space-x-2">
@@ -151,7 +154,8 @@
                 </div>
 
                 <!-- List Item 3 -->
-                <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row">
+                <div class="flex flex-col space-y-3 md:space-y-0 md:space-x-6 md:flex-row" data-reveal
+                    style="--reveal-delay: 300ms">
                     <!-- Heading -->
                     <div class="rounded-l-full bg-brightRedSupLight md:bg-transparent">
                         <div class="flex items-center space-x-2">
@@ -184,12 +188,13 @@
         <!-- Container to heading and testm blocks -->
         <div class="max-w-6xl px-5 mx-auto mt-32 text-center">
             <!-- Heading -->
-            <h2 class="text-4xl font-bold text-center">
+            <h2 class="text-4xl font-bold text-center" data-reveal>
                 What they've said
             </h2>
             <!-- Testimonials Container: swipeable carousel on mobile, 3 columns on desktop -->
             <div id="testimonials-track" role="region" aria-label="Testimonials" tabindex="0"
-                class="flex gap-6 pt-14 mt-10 overflow-x-auto snap-x snap-mandatory no-scrollbar md:overflow-visible md:snap-none">
+                class="flex gap-6 pt-14 mt-10 overflow-x-auto snap-x snap-mandatory no-scrollbar md:overflow-visible md:snap-none"
+                data-reveal>
                 <!-- Testimonial 1 -->
                 <div class="flex flex-col items-center w-full p-6 space-y-6 rounded-lg shrink-0 snap-center bg-veryLightGray md:w-1/3 md:shrink">
                     <img src="img/avatar-anisha.png" class="w-16 -mt-14" alt="" />
@@ -245,7 +250,8 @@
     <section id="cta" class="bg-brightRed">
         <!-- Flex Container -->
         <div
-            class="container flex flex-col items-center justify-between px-6 py-24 mx-auto space-y-12 md:py-12 md:flex-row md:space-y-0">
+            class="container flex flex-col items-center justify-between px-6 py-24 mx-auto space-y-12 md:py-12 md:flex-row md:space-y-0"
+            data-reveal>
             <!-- Heading -->
             <h2 class="text-5xl font-bold text-center text-white md:text-4xl md:max-w-xl md:text-left">
                 Simplify how your team works today

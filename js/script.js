@@ -116,3 +116,20 @@ emailInput.addEventListener('input', () => {
     showFormMessage('', null);
   }
 });
+
+// Reveal-on-scroll: show each [data-reveal] element the first time it enters the viewport
+const revealObserver = new IntersectionObserver(
+  (entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+
+      entry.target.classList.add('is-visible');
+      observer.unobserve(entry.target); // animate only once
+    });
+  },
+  { threshold: 0.15 }
+);
+
+document.querySelectorAll('[data-reveal]').forEach((element) => {
+  revealObserver.observe(element);
+});
